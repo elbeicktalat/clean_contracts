@@ -6,9 +6,6 @@
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/build" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/build" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/macos/Flutter/ephemeral" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/android" />
@@ -17,6 +14,9 @@
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/web" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/windows" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic/linux" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/.dart_tool" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
