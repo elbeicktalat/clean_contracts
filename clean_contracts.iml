@@ -17,6 +17,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/build" />
       <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/flutter_clean_contracts/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/stateful/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/stateful/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/stateful/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
