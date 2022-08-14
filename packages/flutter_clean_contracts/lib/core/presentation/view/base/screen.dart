@@ -11,6 +11,7 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   /// Force the usage of the [builder] methods.
   ///
   /// Override this to ignore other [builder]s.
+  @protected
   bool get alwaysUseBuilder => false;
 
   @override
@@ -23,6 +24,7 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   /// it that also null than desktop implementation is used.
   ///
   /// Other way builder implementation is used.
+  @protected
   Widget? watch() => null;
 
   /// The mobile widget builder.
