@@ -1,10 +1,10 @@
 import 'package:clean_contracts/core/presentation/view/stateful/view.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:stateful/di/di.dart';
 import 'package:stateful/home_view_model.dart';
 
 void main() {
-  GetIt.instance.registerSingleton<HomeViewModel>(HomeViewModel());
+  bindings();
   runApp(const MyApp());
 }
 
