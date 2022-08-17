@@ -1,4 +1,4 @@
-import 'package:clean_contracts/core/domain/entity.dart';
+import 'package:crow/core/domain/entity.dart';
 
 /// Model its responsible of data parsing.
 abstract class Model<E extends Entity> {

@@ -1,4 +1,4 @@
-import 'package:clean_contracts/core/presentation/view_model/view_model.dart';
+import 'package:crow/core/presentation/view_model/view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 

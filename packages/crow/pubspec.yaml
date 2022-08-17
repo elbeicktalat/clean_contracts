@@ -1,7 +1,7 @@
-name: clean_contracts
+name: crow
 description: Clean contracts gives you utils interfaces and some widgets, in order to apply separation of concerns.
 version: 0.0.1
-homepage: https://github.com/elbeicktalat/flutter_clean_contracts
+homepage: https://github.com/elbeicktalat/flutter_crow
 
 environment:
   sdk: ">=2.17.6 <3.0.0"

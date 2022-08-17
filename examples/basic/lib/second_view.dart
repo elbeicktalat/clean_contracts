@@ -1,5 +1,5 @@
-import 'package:clean_contracts/core/presentation/view/stateless/view.dart';
-import 'package:clean_contracts/core/presentation/view_model/view_model.dart';
+import 'package:crow/core/presentation/view/stateless/view.dart';
+import 'package:crow/core/presentation/view_model/view_model.dart';
 import 'package:flutter/material.dart';
 
 class SecondPage extends View<BasicViewModel> {

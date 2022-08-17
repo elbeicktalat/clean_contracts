@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:clean_contracts/core/presentation/extensions/build_context_extension.dart';
-import 'package:clean_contracts/core/presentation/view/utils/screen_type.dart';
-import 'package:clean_contracts/core/presentation/view_model/view_model.dart';
+import 'package:crow/core/presentation/extensions/build_context_extension.dart';
+import 'package:crow/core/presentation/view/utils/screen_type.dart';
+import 'package:crow/core/presentation/view_model/view_model.dart';
 import 'package:flutter/material.dart';
 
 const double _defaultDesktopChangePoint = 1200.0;

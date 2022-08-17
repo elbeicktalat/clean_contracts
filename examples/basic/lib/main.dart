@@ -1,6 +1,6 @@
 import 'package:basic/home_view_model.dart';
-import 'package:clean_contracts/core/presentation/view/stateless/screen.dart';
-import 'package:clean_contracts/core/presentation/view_model/view_model.dart';
+import 'package:crow/core/presentation/view/stateless/screen.dart';
+import 'package:crow/core/presentation/view_model/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

@@ -1,24 +1,23 @@
-# clean_contracts
+# crow
 
-[![Github stars](https://img.shields.io/github/stars/elbeicktalat/clean_contracts?logo=github)](https://github.com/elbeicktalat/clean_contracts)
+[![Github stars](https://img.shields.io/github/stars/elbeicktalat/crow?logo=github)](https://github.com/elbeicktalat/crow)
 
-Clean contracts gives you utils interfaces and some widgets, in order to apply separation of
-concerns.
+Crow gives you utils widgets, in order to apply separation of concerns.
 
 ## Versions
 
-clean_contracts comes with various versions to adapts on your needs.
+crow comes with various versions to adapts on your needs.
 
-1. flutter_clean_contracts
-2. riverpod_clean_contracts
+1. crow
+2. riverpod_crow
 
-### flutter_clean_contracts
+### crow
 
-Let you deal with pure flutter state management, StatefulWidget, ChangeNotifier.
+Let you deal with pure flutter state management, `StatefulWidget`, `ChangeNotifier`.
 
-### riverpod_clean_contracts
+### riverpod_crow
 
-It depends on flutter_clean_contracts in order to give you all its utilities, but its also adding
+It depends on `crow` in order to give you all its utilities, but its also adding
 riverpod utils trick e.g: the ViewModel dose have a `WidgetRef` property.
 
 ## Installation
@@ -26,7 +25,7 @@ riverpod utils trick e.g: the ViewModel dose have a `WidgetRef` property.
 1) Add this to your packages pubspec.yaml file:
 ```yaml
 dependencies:
-  flutter_clean_contracts: <^last> # or riverpod_clean_contracts: <^last> 
+  crow: <^last> # or riverpod_crow: <^last> 
 ```
 1) Install it You can install it from the command line:
 ```bash
@@ -34,10 +33,10 @@ $ flutter pub get
 ```
 1) Import it Now in Dart code, you can use:
 ```dart
-import 'package:flutter_clean_contracts/flutter_clean_contracts.dart';
+import 'package:crow/crow.dart';
 
 // if you use flutter riverpod
-import 'package:riverpod_clean_contracts/riverpod_clean_contracts.dart';
+import 'package:riverpod_crow/riverpod_crow.dart';
 ```
 
 ## Usage
@@ -75,7 +74,7 @@ class HomeView extends View<HomeViewModel> {
 }
 
 class HomeViewModel extends ViewModel {
-  final String title = 'flutter_clean_contracts';
+  final String title = 'flutter_crow';
   
   void navToNext() {
     Navigator.push(

@@ -106,13 +106,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  clean_contracts:
-    dependency: "direct main"
-    description:
-      path: "../../packages/flutter_clean_contracts"
-      relative: true
-    source: path
-    version: "0.0.1"
   clock:
     dependency: transitive
     description:
@@ -141,6 +134,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  crow:
+    dependency: "direct main"
+    description:
+      path: "../../packages/crow"
+      relative: true
+    source: path
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:
