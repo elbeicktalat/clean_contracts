@@ -1,7 +1,7 @@
-import 'package:crow/core/presentation/view/base/screen.dart';
-import 'package:crow/core/presentation/view/base/view.dart';
-import 'package:crow/core/presentation/view/utils/screen_settings.dart';
-import 'package:crow/core/presentation/view_model/view_model.dart';
+import 'package:crow/src/base/screen.dart';
+import 'package:crow/src/base/view.dart';
+import 'package:crow/src/utils/screen_settings.dart';
+import 'package:crow/src/view_model/view_model.dart';
 import 'package:flutter/material.dart';
 
 /// The [Screen] mixin of the [StatelessWidget].

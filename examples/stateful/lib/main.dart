@@ -1,4 +1,4 @@
-import 'package:crow/core/presentation/view/stateful/view.dart';
+import 'package:crow/crow.dart' show ViewState;
 import 'package:flutter/material.dart';
 import 'package:stateful/di/di.dart';
 import 'package:stateful/home_view_model.dart';

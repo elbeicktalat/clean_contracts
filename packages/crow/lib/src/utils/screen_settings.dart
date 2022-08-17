@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:crow/core/presentation/extensions/build_context_extension.dart';
-import 'package:crow/core/presentation/view/utils/screen_type.dart';
-import 'package:crow/core/presentation/view_model/view_model.dart';
+import 'package:crow/src/utils/screen_type.dart';
+import 'package:crow/src/view_model/view_model.dart';
 import 'package:flutter/material.dart';
 
 const double _defaultDesktopChangePoint = 1200.0;
@@ -52,11 +51,11 @@ class ResponsiveScreen<T extends BaseViewModel> {
   bool get isPlatformDesktop =>
       Platform.isMacOS || Platform.isLinux || Platform.isWindows;
 
-  /// The height shorthand got from the [MediaQuery]
-  double get height => context.height;
-
   /// The width shorthand got from the [MediaQuery]
-  double get width => context.width;
+  double get width => MediaQuery.of(context).size.width;
+
+  /// The height shorthand got from the [MediaQuery]
+  double get height => MediaQuery.of(context).size.height;
 
   /// Weather the [_screenType] is [ScreenType.Watch]
   bool get isWatch => _screenType == ScreenType.watch;

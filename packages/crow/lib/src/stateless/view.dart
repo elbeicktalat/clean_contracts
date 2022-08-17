@@ -1,5 +1,5 @@
-import 'package:crow/core/presentation/view/base/view.dart';
-import 'package:crow/core/presentation/view_model/view_model.dart';
+import 'package:crow/src/base/view.dart';
+import 'package:crow/src/view_model/view_model.dart';
 import 'package:flutter/material.dart';
 
 /// The StatelessWidget mixin.

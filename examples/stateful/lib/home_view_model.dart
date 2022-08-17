@@ -1,4 +1,4 @@
-import 'package:crow/core/presentation/view_model/state_view_model.dart';
+import 'package:crow/crow.dart' show StateViewModel;
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 

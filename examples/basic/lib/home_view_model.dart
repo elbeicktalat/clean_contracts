@@ -1,5 +1,5 @@
 import 'package:basic/second_view.dart';
-import 'package:crow/core/presentation/view_model/view_model.dart';
+import 'package:crow/crow.dart' show ViewModel;
 import 'package:flutter/material.dart';
 
 class HomeViewModel extends ViewModel {

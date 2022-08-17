@@ -1,4 +1,4 @@
-import 'package:crow/core/presentation/view_model/view_model.dart';
+import 'package:crow/src/view_model/view_model.dart';
 import 'package:flutter/widgets.dart' show Widget, protected;
 import 'package:get_it/get_it.dart' show GetIt;
 

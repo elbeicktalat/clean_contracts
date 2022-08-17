@@ -1,6 +1,5 @@
-import 'package:crow/core/presentation/view/stateless/view.dart';
-import 'package:crow/core/presentation/view_model/view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:crow/crow.dart' show BasicViewModel, View;
 
 class SecondPage extends View<BasicViewModel> {
   const SecondPage({Key? key}) : super(key: key);
