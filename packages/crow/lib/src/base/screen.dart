@@ -5,7 +5,7 @@
 import 'package:crow/src/base/view.dart';
 import 'package:crow/src/utils/screen_settings.dart';
 import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/widgets.dart' show Widget, protected;
+import 'package:flutter/widgets.dart' show BuildContext, Widget, protected;
 
 /// The base mixin for every Screen.
 mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
@@ -59,4 +59,34 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
       tablet() != null ||
       desktop() != null ||
       builder() != null;
+
+  @override
+  Widget build(final BuildContext context) {
+    screen.context = context;
+    viewModel.context = context;
+    Widget? widget;
+    if (!alwaysUseBuilder) {
+      if (screen.isDesktop) {
+        widget = desktop() ?? widget;
+        if (widget != null) return widget;
+      }
+      if (screen.isTablet) {
+        widget = tablet() ?? desktop();
+        if (widget != null) return widget;
+      }
+      if (screen.isMobile) {
+        widget = mobile() ?? tablet() ?? desktop();
+        if (widget != null) return widget;
+      }
+      if (screen.isWatch) {
+        widget = watch() ?? mobile() ?? tablet() ?? desktop();
+        if (widget != null) return widget;
+      }
+    } else {
+      widget = builder();
+      if (widget != null) return widget;
+    }
+    assert(hasImplementation, 'Provide at least one implementation');
+    return watch() ?? mobile() ?? tablet() ?? desktop() ?? builder()!;
+  }
 }

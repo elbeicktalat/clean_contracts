@@ -3,13 +3,13 @@
 //  found in the LICENSE file.
 
 import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/widgets.dart' show Widget, protected;
+import 'package:flutter/widgets.dart' show BuildContext, Widget, protected;
 import 'package:get_it/get_it.dart' show GetIt;
 
 /// The base mixin for every View.
 ///
 /// This mixin need a type parameter of [BaseViewModel].
-mixin BaseViewMixin<T extends BaseViewModel> on Widget {
+mixin BaseViewMixin<T extends BaseViewModel> {
   GetIt get _getIt => GetIt.instance;
 
   /// The instance of the ViewModel.
@@ -19,4 +19,11 @@ mixin BaseViewMixin<T extends BaseViewModel> on Widget {
   /// The widget method which get the place of build method.
   @protected
   Widget? builder();
+
+  /// Flutter build method, don't override this method instate use builder.
+  @protected
+  Widget build(final BuildContext context) {
+    viewModel.context = context;
+    return builder()!;
+  }
 }

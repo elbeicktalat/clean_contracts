@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 /// The dedicated [BaseViewModel] to deal with state of [StatefulWidget].
-class StateViewModel extends BaseViewModel {
+abstract class StateViewModel extends BaseViewModel {
   /// Called when this object is inserted into the tree.
   ///
   /// The framework will call this method exactly once for each [State] object

@@ -2,30 +2,16 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
+import 'package:crow/src/base/view.dart';
 import 'package:crow/src/view_model/state_view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get_it/get_it.dart';
 
 /// The State mixin.
 ///
 /// This allows the [StateViewModel] to deal with [State] methods.
 mixin StateMixin<T extends StatefulWidget, V extends StateViewModel>
-    on State<T> {
-  /// The instance of the ViewModel.
-  @protected
-  V get viewModel => GetIt.instance.get<V>();
-
-  /// The widget method which get the place of build method.
-  @protected
-  Widget? builder();
-
-  @override
-  Widget build(final BuildContext context) {
-    viewModel.context = context;
-    return builder()!;
-  }
-
+    on BaseViewMixin<V>, State<T> {
   @protected
   @override
   @mustCallSuper
@@ -87,4 +73,4 @@ mixin StateMixin<T extends StatefulWidget, V extends StateViewModel>
 /// Need tow type parameter the first is subclass of [StatefulWidget]
 /// and the second is a subclass of [StateViewModel].
 abstract class ViewState<T extends StatefulWidget, V extends StateViewModel>
-    extends State<T> with StateMixin<T, V> {}
+    extends State<T> with BaseViewMixin<V>, StateMixin<T, V> {}
