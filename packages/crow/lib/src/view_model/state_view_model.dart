@@ -1,3 +1,7 @@
+//  Copyright (c) 2020-2022 Talat El Beick. All rights reserved.
+//  Use of this source code is governed by a MIT-style license that can be
+//  found in the LICENSE file.
+
 import 'package:crow/src/view_model/view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
