@@ -5,6 +5,7 @@
 import 'package:crow/src/base/screen.dart';
 import 'package:crow/src/base/view.dart';
 import 'package:crow/src/stateful/view.dart';
+import 'package:crow/src/utils/screen_settings.dart';
 import 'package:crow/src/view_model/state_view_model.dart';
 import 'package:flutter/widgets.dart';
 
@@ -24,4 +25,16 @@ abstract class ScreenState<T extends StatefulWidget, V extends StateViewModel>
         BaseViewMixin<V>,
         BaseScreenMixin<V>,
         StateMixin<T, V>,
-        ScreenStateMixin<T, V> {}
+        ScreenStateMixin<T, V> {
+  ///
+  ScreenState({
+    final this.alwaysUseBuilder = false,
+    final ScreenSettings settings = const ScreenSettings(),
+  }) : screen = ResponsiveScreen<V>(settings);
+
+  @override
+  final bool alwaysUseBuilder;
+
+  @override
+  final ResponsiveScreen<V> screen;
+}

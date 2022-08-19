@@ -15,12 +15,14 @@ abstract class StateViewModel extends BaseViewModel {
   ///
   /// Implementations of this method should start with a call to the inherited
   /// method, as in `super.initState()`.
+  @protected
   @mustCallSuper
   void initState() {}
 
   /// In addition to this method being invoked, it is guaranteed that the
   /// [build] method will be invoked when a reassemble is signaled. Most
   /// widgets therefore do not need to do anything in the [reassemble] method.
+  @protected
   @mustCallSuper
   void reassemble() {}
 
@@ -32,6 +34,7 @@ abstract class StateViewModel extends BaseViewModel {
   ///
   /// Implementations of this method should end with a call to the inherited
   /// method, as in `super.deactivate()`.
+  @protected
   @mustCallSuper
   void deactivate() {}
 
@@ -40,6 +43,7 @@ abstract class StateViewModel extends BaseViewModel {
   ///
   /// Implementations of this method should start with a call to the inherited
   /// method, as in `super.activate()`.
+  @protected
   @mustCallSuper
   void activate() {}
 
@@ -51,6 +55,7 @@ abstract class StateViewModel extends BaseViewModel {
   /// See also:
   ///
   ///  * [deactivate], which is called prior to [dispose].
+  @protected
   @mustCallSuper
   void dispose() {}
 
@@ -58,6 +63,7 @@ abstract class StateViewModel extends BaseViewModel {
   ///
   /// This method is also called immediately after [initState]. It is safe to
   /// call [BuildContext.dependOnInheritedWidgetOfExactType] from this method.
+  @protected
   @mustCallSuper
   void didChangeDependencies() {}
 
@@ -65,6 +71,7 @@ abstract class StateViewModel extends BaseViewModel {
   ///
   /// For more info hit on:
   /// [Debug properties | Decoding Flutter](https://www.youtube.com/watch?v=DnC7eT-vh1k),
+  @protected
   @mustCallSuper
   void debugFillProperties(final DiagnosticPropertiesBuilder properties) {}
 }

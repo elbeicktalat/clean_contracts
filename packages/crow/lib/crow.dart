@@ -4,6 +4,7 @@
 
 library flutter_crow;
 
+export 'package:crow/src/stateful/screen.dart';
 export 'package:crow/src/stateful/view.dart';
 export 'package:crow/src/stateless/screen.dart';
 export 'package:crow/src/stateless/view.dart';

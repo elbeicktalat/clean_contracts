@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart' show BuildContext, Widget, protected;
 /// The base mixin for every Screen.
 mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   /// Get util info about the screen.
+  @protected
   ResponsiveScreen<T> get screen;
 
   /// Force the usage of the [builder] methods.
@@ -37,6 +38,7 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   /// if that also null than desktop implementation is used.
   ///
   /// Other way builder implementation is used.
+  @protected
   Widget? mobile() => null;
 
   /// The tablet widget builder.
@@ -44,11 +46,13 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   /// If its null than desktop implementation is used.
   ///
   /// Other way builder implementation is used.
+  @protected
   Widget? tablet() => null;
 
   /// The desktop widget builder.
   ///
   /// If its null than builder implementation is used.
+  @protected
   Widget? desktop() => null;
 
   /// Weather the screen has one implementation.
@@ -65,25 +69,20 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
     screen.context = context;
     viewModel.context = context;
     Widget? widget;
-    if (!alwaysUseBuilder) {
-      if (screen.isDesktop) {
-        widget = desktop() ?? widget;
-        if (widget != null) return widget;
-      }
-      if (screen.isTablet) {
-        widget = tablet() ?? desktop();
-        if (widget != null) return widget;
-      }
-      if (screen.isMobile) {
-        widget = mobile() ?? tablet() ?? desktop();
-        if (widget != null) return widget;
-      }
-      if (screen.isWatch) {
-        widget = watch() ?? mobile() ?? tablet() ?? desktop();
-        if (widget != null) return widget;
-      }
-    } else {
+    if (alwaysUseBuilder) {
       widget = builder();
+      if (widget != null) return widget;
+    }
+    if (screen.isDesktop) {
+      widget = desktop() ?? widget;
+      if (widget != null) return widget;
+    }
+    if (screen.isTablet) {
+      widget = tablet() ?? desktop();
+      if (widget != null) return widget;
+    }
+    if (screen.isMobile) {
+      widget = mobile() ?? tablet() ?? desktop();
       if (widget != null) return widget;
     }
     assert(hasImplementation, 'Provide at least one implementation');
