@@ -4,14 +4,17 @@
 
 import 'package:crow/src/_internal/internal.dart' show BaseViewMixin;
 import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/material.dart' show StatelessWidget;
+import 'package:flutter/widgets.dart' show StatelessWidget, optionalTypeArgs;
 
 /// The [StatelessWidget] which comes with viewModel instance
 /// and some other utilities.
 ///
-/// You must define the type parameter in order to get the expected ViewModel.
+/// This Widget dose accept a type parameter to allows
+/// concrete [ViewModel] access. If nothing is specified than the [viewModel]
+/// instance is a [ViewModel] instance.
+@optionalTypeArgs
 abstract class View<T extends ViewModel> extends StatelessWidget
     with BaseViewMixin<T> {
-  ///
+  /// The const contracture of the [View].
   const View({final super.key});
 }

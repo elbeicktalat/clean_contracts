@@ -23,6 +23,8 @@ export 'package:crow/src/utils/screen_type.dart';
 export 'package:crow/src/view_model/state_view_model.dart';
 export 'package:crow/src/view_model/view_model.dart';
 
+class _DefaultViewModel extends ViewModel {}
+
 /// The glue between the crow widgets and your app.
 class Crow {
   const Crow._internal();
@@ -33,8 +35,6 @@ class Crow {
 
   /// The place in where preregistered dependencies get registered.
   void initDependencies() {
-    GetIt.instance
-      ..registerLazySingleton<ViewModel>(DefaultViewModel.new)
-      ..registerLazySingleton<DefaultViewModel>(DefaultViewModel.new);
+    GetIt.instance.registerLazySingleton<ViewModel>(_DefaultViewModel.new);
   }
 }
