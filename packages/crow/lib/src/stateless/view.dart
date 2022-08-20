@@ -16,5 +16,5 @@ import 'package:flutter/widgets.dart' show StatelessWidget, optionalTypeArgs;
 abstract class View<T extends ViewModel> extends StatelessWidget
     with BaseViewMixin<T> {
   /// The const contracture of the [View].
-  const View({final super.key});
+  const View({super.key});
 }

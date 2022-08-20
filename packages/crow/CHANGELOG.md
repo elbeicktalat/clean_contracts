@@ -1,3 +1,2 @@
-## 0.0.1
-
-* TODO: Describe initial release.
+### [1.0.0] - 10 Aug 2022
+- Firs public release

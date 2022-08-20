@@ -16,7 +16,7 @@ abstract class ScreenState<T extends StatefulWidget, V extends StateViewModel>
     extends State<T> with StateMixin<T, V>, ScreenStateMixin<T, V> {
   ///
   ScreenState({
-    final this.alwaysUseBuilder = false,
+    this.alwaysUseBuilder = false,
     final ScreenSettings settings = const ScreenSettings(),
   }) : screen = ResponsiveScreen<V>(settings);
 

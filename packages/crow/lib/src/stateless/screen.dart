@@ -20,8 +20,8 @@ abstract class Screen<T extends ViewModel> extends StatelessWidget
   /// to the [ScreenSettings]. The [alwaysUseBuilder] property
   /// dose overwrite the default getter if you don't reimplement it.
   Screen({
-    final super.key,
-    final this.alwaysUseBuilder = false,
+    super.key,
+    this.alwaysUseBuilder = false,
     final ScreenSettings settings = const ScreenSettings(),
   }) : screen = ResponsiveScreen<T>(settings);
 
