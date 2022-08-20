@@ -2,11 +2,7 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'dart:io';
-
-import 'package:crow/src/utils/screen_type.dart';
-import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/material.dart';
+part of internal;
 
 const double _defaultDesktopChangePoint = 1200.0;
 const double _defaultTabletChangePoint = 600.0;

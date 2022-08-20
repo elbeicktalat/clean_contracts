@@ -2,9 +2,7 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/widgets.dart' show BuildContext, Widget, protected;
-import 'package:get_it/get_it.dart' show GetIt;
+part of internal;
 
 /// The base mixin for every View.
 ///

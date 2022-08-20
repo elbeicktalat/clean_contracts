@@ -2,12 +2,11 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:crow/src/base/screen.dart';
-import 'package:crow/src/base/view.dart';
+import 'package:crow/src/_internal/internal.dart'
+    show BaseScreenMixin, BaseViewMixin, ResponsiveScreen, ScreenSettings;
 import 'package:crow/src/stateful/view.dart';
-import 'package:crow/src/utils/screen_settings.dart';
 import 'package:crow/src/view_model/state_view_model.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' show State, StatefulWidget;
 
 /// The Screen State mixin.
 ///

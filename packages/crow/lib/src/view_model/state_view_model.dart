@@ -2,9 +2,9 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:crow/src/_internal/internal.dart' show BaseViewModel;
+import 'package:flutter/foundation.dart'
+    show protected, mustCallSuper, DiagnosticPropertiesBuilder;
 
 /// The dedicated [BaseViewModel] to deal with state of [StatefulWidget].
 abstract class StateViewModel extends BaseViewModel {

@@ -2,11 +2,10 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:crow/src/base/screen.dart';
-import 'package:crow/src/base/view.dart';
-import 'package:crow/src/utils/screen_settings.dart';
+import 'package:crow/src/_internal/internal.dart'
+    show BaseScreenMixin, BaseViewMixin, ResponsiveScreen, ScreenSettings;
 import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show StatelessWidget;
 
 /// The [Screen] mixin of the [StatelessWidget].
 mixin ScreenMixin<T extends ViewModel> on BaseScreenMixin<T>, StatelessWidget {}

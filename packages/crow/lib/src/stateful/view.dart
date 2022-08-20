@@ -4,10 +4,12 @@
 
 // ignore_for_file: invalid_use_of_protected_member
 
-import 'package:crow/src/base/view.dart';
+import 'package:crow/src/_internal/internal.dart' show BaseViewMixin;
 import 'package:crow/src/view_model/state_view_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart'
+    show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/widgets.dart'
+    show State, StatefulWidget, mustCallSuper, protected;
 
 /// The State mixin.
 ///

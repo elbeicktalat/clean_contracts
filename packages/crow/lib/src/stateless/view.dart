@@ -2,9 +2,9 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:crow/src/base/view.dart';
+import 'package:crow/src/_internal/internal.dart' show BaseViewMixin;
 import 'package:crow/src/view_model/view_model.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show StatelessWidget;
 
 /// The StatelessWidget mixin.
 mixin ViewMixin<T extends ViewModel> on StatelessWidget, BaseViewMixin<T> {}

@@ -2,7 +2,7 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-library flutter_crow;
+library crow;
 
 export 'package:crow/src/stateful/screen.dart';
 export 'package:crow/src/stateful/view.dart';
