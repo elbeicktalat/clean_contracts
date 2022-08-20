@@ -16,6 +16,9 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   @protected
   bool get alwaysUseBuilder => false;
 
+  /// {@macro crow.context}
+  ///
+  /// This is a shorthand for [screen.context].
   @override
   @protected
   BuildContext get context => screen.context;

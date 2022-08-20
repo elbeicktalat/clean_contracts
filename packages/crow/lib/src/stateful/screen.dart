@@ -17,7 +17,7 @@ mixin ScreenStateMixin<T extends StatefulWidget, V extends StateViewModel>
 
 /// [ScreenState] is the implementation of [State].
 ///
-/// Needs tow type parameters, the first is subclass of [StatefulWidget]
+/// Needs tow type parameters, the first is a subclass of [StatefulWidget]
 /// and the second is a subclass of [StateViewModel].
 abstract class ScreenState<T extends StatefulWidget, V extends StateViewModel>
     extends State<T>

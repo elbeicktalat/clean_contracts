@@ -6,10 +6,7 @@ part of internal;
 
 /// The parent of all ViewModels.
 abstract class BaseViewModel {
-  /// The [context] contains information about the location in the
-  /// tree at which the associated widget is being built.
-  ///
-  /// This [context] get defined within [WidgetBuilder] method.
+  /// {@macro crow.context}
   @protected
   BuildContext get context => _context;
   late BuildContext _context;

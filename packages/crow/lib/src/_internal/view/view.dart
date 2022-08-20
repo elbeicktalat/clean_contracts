@@ -14,10 +14,16 @@ mixin BaseViewMixin<T extends BaseViewModel> {
   @protected
   T get viewModel => _getIt.get<T>();
 
+  /// {@template crow.context}
+  ///
   /// The [context] contains information about the location in the
   /// tree at which the associated widget is being built.
   ///
   /// This [context] get defined within [build] method.
+  ///
+  /// {@endtemplate}
+  ///
+  /// This is a shorthand for [viewModel.context].
   @protected
   BuildContext get context => viewModel.context;
 
@@ -25,7 +31,9 @@ mixin BaseViewMixin<T extends BaseViewModel> {
   @protected
   Widget? builder();
 
-  /// Flutter build method, don't override this method instate use builder.
+  /// The Widget build method, don't override this method instead use [builder].
+  ///
+  /// If do you override this than you'll lose the global context.
   @protected
   Widget build(final BuildContext context) {
     viewModel._context = context;
