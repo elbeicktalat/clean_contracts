@@ -1,11 +1,11 @@
 import 'package:basic/home_view_model.dart';
-import 'package:crow/crow.dart' show BasicViewModel, Screen;
+import 'package:crow/crow.dart' show Crow, Screen;
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 void main() {
+  Crow.instance.initDependencies();
   GetIt.instance.registerSingleton<HomeViewModel>(HomeViewModel());
-  GetIt.instance.registerSingleton<BasicViewModel>(BasicViewModel());
   runApp(const App());
 }
 

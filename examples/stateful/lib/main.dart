@@ -1,9 +1,10 @@
-import 'package:crow/crow.dart' show ViewState;
+import 'package:crow/crow.dart' show Crow, ViewState;
 import 'package:flutter/material.dart';
 import 'package:stateful/di/di.dart';
 import 'package:stateful/home_view_model.dart';
 
 void main() {
+  Crow.instance.initDependencies();
   bindings();
   runApp(const MyApp());
 }

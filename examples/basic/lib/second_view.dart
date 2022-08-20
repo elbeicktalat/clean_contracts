@@ -1,13 +1,14 @@
+import 'package:crow/crow.dart' show DefaultViewModel, View;
 import 'package:flutter/material.dart';
-import 'package:crow/crow.dart' show BasicViewModel, View;
 
-class SecondPage extends View<BasicViewModel> {
+class SecondPage extends View<DefaultViewModel> {
   const SecondPage({Key? key}) : super(key: key);
 
   @override
   Widget builder() {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Center(
         child: Text('Go back'),
       ),
     );
