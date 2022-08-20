@@ -10,4 +10,4 @@ abstract class ViewModel extends BaseViewModel {}
 /// The preregistered [ViewModel].
 ///
 /// Use this if you haven't any custom stuffs.
-class BasicViewModel extends ViewModel {}
+class DefaultViewModel extends ViewModel {}
