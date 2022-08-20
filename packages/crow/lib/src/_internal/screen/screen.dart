@@ -16,6 +16,9 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   @protected
   bool get alwaysUseBuilder => false;
 
+  /// The [BuildContext] abbreviation of [screen.context].
+  BuildContext get context => screen.context;
+
   @override
   Widget? builder() => null;
 
@@ -62,9 +65,10 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
       builder() != null;
 
   @override
+  @mustCallSuper
   Widget build(final BuildContext context) {
-    screen.context = context;
-    viewModel.context = context;
+    screen._context = context;
+    viewModel._context = context;
     Widget? widget;
     if (alwaysUseBuilder) {
       widget = builder();

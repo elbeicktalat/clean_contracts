@@ -42,8 +42,9 @@ class ResponsiveScreen<T extends BaseViewModel> {
   /// The [context] contains information about the location in the
   /// tree at which the associated widget is being built.
   ///
-  /// This [context] get defined within [WidgetBuilder] method.
-  late BuildContext context;
+  /// This [context] get defined within **build** method.
+  BuildContext get context => _context;
+  late BuildContext _context;
 
   final ScreenSettings _settings;
 
@@ -52,10 +53,10 @@ class ResponsiveScreen<T extends BaseViewModel> {
       Platform.isMacOS || Platform.isLinux || Platform.isWindows;
 
   /// The width shorthand got from the [MediaQuery]
-  double get width => MediaQuery.of(context).size.width;
+  double get width => MediaQuery.of(_context).size.width;
 
   /// The height shorthand got from the [MediaQuery]
-  double get height => MediaQuery.of(context).size.height;
+  double get height => MediaQuery.of(_context).size.height;
 
   /// Weather the [_screenType] is [ScreenType.Watch]
   bool get isWatch => _screenType == ScreenType.watch;

@@ -21,7 +21,7 @@ mixin BaseViewMixin<T extends BaseViewModel> {
   /// Flutter build method, don't override this method instate use builder.
   @protected
   Widget build(final BuildContext context) {
-    viewModel.context = context;
+    viewModel._context = context;
     return builder()!;
   }
 }

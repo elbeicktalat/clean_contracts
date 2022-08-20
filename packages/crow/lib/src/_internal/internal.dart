@@ -8,7 +8,7 @@ import 'dart:io' show Platform;
 
 import 'package:crow/src/utils/screen_type.dart';
 import 'package:flutter/widgets.dart'
-    show protected, BuildContext, Widget, MediaQuery;
+    show protected, mustCallSuper, BuildContext, Widget, MediaQuery;
 import 'package:get_it/get_it.dart' show GetIt;
 
 part 'screen/screen.dart';
