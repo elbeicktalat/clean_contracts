@@ -14,6 +14,13 @@ mixin BaseViewMixin<T extends BaseViewModel> {
   @protected
   T get viewModel => _getIt.get<T>();
 
+  /// The [context] contains information about the location in the
+  /// tree at which the associated widget is being built.
+  ///
+  /// This [context] get defined within [build] method.
+  @protected
+  BuildContext get context => viewModel.context;
+
   /// The widget method which get the place of build method.
   @protected
   Widget? builder();
