@@ -7,7 +7,7 @@ part of internal;
 /// The base mixin for every View.
 ///
 /// This mixin need a type parameter of [BaseViewModel].
-mixin BaseViewMixin<T extends BaseViewModel> {
+mixin BaseViewMixin<T extends BaseViewModel> on Widget {
   GetIt get _getIt => GetIt.instance;
 
   /// The instance of the ViewModel.
