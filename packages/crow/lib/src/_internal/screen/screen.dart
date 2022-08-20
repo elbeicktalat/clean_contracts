@@ -16,10 +16,12 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   @protected
   bool get alwaysUseBuilder => false;
 
-  /// The [BuildContext] abbreviation of [screen.context].
+  @override
+  @protected
   BuildContext get context => screen.context;
 
   @override
+  @protected
   Widget? builder() => null;
 
   /// The watch widget builder.
@@ -56,8 +58,7 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
   Widget? desktop() => null;
 
   /// Weather the screen has one implementation.
-  @protected
-  bool get hasImplementation =>
+  bool get _hasImplementation =>
       watch() != null ||
       mobile() != null ||
       tablet() != null ||
@@ -65,6 +66,7 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
       builder() != null;
 
   @override
+  @protected
   @mustCallSuper
   Widget build(final BuildContext context) {
     screen._context = context;
@@ -86,7 +88,7 @@ mixin BaseScreenMixin<T extends BaseViewModel> on BaseViewMixin<T> {
       widget = mobile() ?? tablet() ?? desktop();
       if (widget != null) return widget;
     }
-    assert(hasImplementation, 'Provide at least one implementation');
+    assert(_hasImplementation, 'Provide at least one implementation');
     return watch() ?? mobile() ?? tablet() ?? desktop() ?? builder()!;
   }
 }

@@ -4,36 +4,6 @@
 
 part of internal;
 
-const double _defaultDesktopChangePoint = 1200.0;
-const double _defaultTabletChangePoint = 600.0;
-const double _defaultWatchChangePoint = 300.0;
-
-/// The ScreenSettings defines the Change points.
-class ScreenSettings {
-  ///
-  const ScreenSettings({
-    this.desktopChangePoint = _defaultDesktopChangePoint,
-    this.tabletChangePoint = _defaultTabletChangePoint,
-    this.watchChangePoint = _defaultWatchChangePoint,
-  });
-
-  /// When the width is greater than this value
-  /// the display will be set as [ScreenType.desktop]
-  final double desktopChangePoint;
-
-  /// When the width is greater than this value
-  /// the display will be set as [ScreenType.tablet]
-  /// or when width greater than [watchChangePoint] and smaller than this value
-  /// the display will be [ScreenType.mobile]
-  final double tabletChangePoint;
-
-  /// When the width is smaller than this value
-  /// the display will be set as [ScreenType.watch]
-  /// or when width greater than this value and smaller also [tabletChangePoint]
-  /// the display will be [ScreenType.mobile]
-  final double watchChangePoint;
-}
-
 /// ResponsiveScreen holds utils information about the screen.
 class ResponsiveScreen<T extends BaseViewModel> {
   ///
@@ -43,6 +13,7 @@ class ResponsiveScreen<T extends BaseViewModel> {
   /// tree at which the associated widget is being built.
   ///
   /// This [context] get defined within **build** method.
+  @protected
   BuildContext get context => _context;
   late BuildContext _context;
 

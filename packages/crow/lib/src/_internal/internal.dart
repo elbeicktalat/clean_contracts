@@ -6,12 +6,13 @@ library internal;
 
 import 'dart:io' show Platform;
 
+import 'package:crow/src/utils/screen_settings.dart';
 import 'package:crow/src/utils/screen_type.dart';
 import 'package:flutter/widgets.dart'
     show protected, mustCallSuper, BuildContext, Widget, MediaQuery;
 import 'package:get_it/get_it.dart' show GetIt;
 
+part 'screen/responsive_screen.dart';
 part 'screen/screen.dart';
-part 'screen/screen_settings.dart';
 part 'view/view.dart';
 part 'view_model/base_view_model.dart';

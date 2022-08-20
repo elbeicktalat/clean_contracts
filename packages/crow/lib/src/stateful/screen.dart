@@ -3,8 +3,9 @@
 //  found in the LICENSE file.
 
 import 'package:crow/src/_internal/internal.dart'
-    show BaseScreenMixin, BaseViewMixin, ResponsiveScreen, ScreenSettings;
+    show BaseScreenMixin, BaseViewMixin, ResponsiveScreen;
 import 'package:crow/src/stateful/view.dart';
+import 'package:crow/src/utils/screen_settings.dart';
 import 'package:crow/src/view_model/state_view_model.dart';
 import 'package:flutter/widgets.dart' show State, StatefulWidget;
 
@@ -16,7 +17,7 @@ mixin ScreenStateMixin<T extends StatefulWidget, V extends StateViewModel>
 
 /// [ScreenState] is the implementation of [State].
 ///
-/// Need tow type parameter the first is subclass of [StatefulWidget]
+/// Needs tow type parameters, the first is subclass of [StatefulWidget]
 /// and the second is a subclass of [StateViewModel].
 abstract class ScreenState<T extends StatefulWidget, V extends StateViewModel>
     extends State<T>
