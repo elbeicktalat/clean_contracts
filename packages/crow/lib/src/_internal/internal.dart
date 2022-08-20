@@ -12,7 +12,7 @@ import 'package:flutter/widgets.dart'
     show protected, mustCallSuper, BuildContext, Widget, MediaQuery;
 import 'package:get_it/get_it.dart' show GetIt;
 
-part 'screen/responsive_screen.dart';
-part 'screen/screen.dart';
-part 'view/view.dart';
-part 'view_model/base_view_model.dart';
+part 'src/base_view.dart';
+part 'src/base_view_model.dart';
+part 'src/screen/base_screen.dart';
+part 'src/screen/responsive_screen.dart';
