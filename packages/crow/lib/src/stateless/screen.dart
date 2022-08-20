@@ -9,12 +9,9 @@ import 'package:crow/src/view_model/view_model.dart';
 import 'package:flutter/material.dart' show StatelessWidget;
 import 'package:flutter/widgets.dart';
 
-/// The [Screen] mixin of the [StatelessWidget].
-mixin ScreenMixin<T extends ViewModel> on BaseScreenMixin<T>, StatelessWidget {}
-
-/// The implementation version of the [StatelessWidget] and [ScreenMixin].
+/// The implementation version of the [StatelessWidget] and [BaseScreenMixin].
 abstract class Screen<T extends ViewModel> extends StatelessWidget
-    with BaseViewMixin<T>, BaseScreenMixin<T>, ScreenMixin<T> {
+    with BaseViewMixin<T>, BaseScreenMixin<T> {
   ///
   Screen({
     final super.key,
