@@ -1,0 +1,13 @@
+name: crow_contracts
+description: A set of interfaces to apply the clean architecture concepts.
+version: 0.0.1
+homepage: https://github.com/elbeicktalat/crow/tree/master/packages/contracts
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  meta: ^1.8.0
+
+dev_dependencies:
+  lints: ^2.0.0
