@@ -26,6 +26,18 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/contracts/build" />
       <excludeFolder url="file://$MODULE_DIR$/packages/contracts/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/contracts/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation_builder/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation_builder/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation_builder/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/example/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

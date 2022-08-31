@@ -1,0 +1,17 @@
+name: example
+description: An example of crow_annotation.
+version: 0.0.1
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  crow_annotation:
+    path: ../crow_annotation
+
+dev_dependencies:
+  lints: ^2.0.0
+  crow_annotation_builder:
+    path: ../crow_annotation_builder
+  build_runner:

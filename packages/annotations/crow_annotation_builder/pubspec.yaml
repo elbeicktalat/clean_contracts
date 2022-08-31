@@ -1,0 +1,18 @@
+name: crow_annotation_builder
+description: The maker of the magic of crow_annotation.
+version: 0.0.1
+homepage: https://github.com/elbeicktalat/crow/tree/master/packages/annotations/crow_annotation
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  crow_annotation:
+    path: ../crow_annotation
+  analyzer: ^4.6.0
+  build: ^2.3.0
+  source_gen: ^1.2.2
+
+dev_dependencies:
+  lints: ^2.0.0
+  build_runner: ^2.2.0
