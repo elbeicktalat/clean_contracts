@@ -35,9 +35,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation_builder/build" />
       <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation_builder/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation_builder/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/example/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/example/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/annotations/crow_annotation/example/.dart_tool" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

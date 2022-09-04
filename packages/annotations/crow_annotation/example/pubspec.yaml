@@ -8,10 +8,10 @@ environment:
 
 dependencies:
   crow_annotation:
-    path: ../crow_annotation
+    path: ../
 
 dev_dependencies:
   lints: ^2.0.0
   crow_annotation_builder:
-    path: ../crow_annotation_builder
+    path: ../../crow_annotation_builder
   build_runner:

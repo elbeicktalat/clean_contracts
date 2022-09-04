@@ -1,8 +1,29 @@
 builders:
-  model_builder:
-    import: "package:crow_annotation_builder/builder.dart"
-    builder_factories: ["convertBuilder"]
-    build_extensions: {".dart": ["convert.g.part"]}
+  converter_builder:
+    import: "package:crow_annotation_builder/crow_annotation_builder.dart"
+    builder_factories: ["converterBuilder"]
+    build_extensions: {".dart": ["converter.g.part"]}
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]
+  to_string_builder:
+    import: "package:crow_annotation_builder/crow_annotation_builder.dart"
+    builder_factories: ["toStringBuilder"]
+    build_extensions: {".dart": ["toString.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
+  equals_builder:
+    import: "package:crow_annotation_builder/crow_annotation_builder.dart"
+    builder_factories: [ "equalsBuilder" ]
+    build_extensions: { ".dart": [ "equals.g.part" ] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
+  hash_code_builder:
+    import: "package:crow_annotation_builder/crow_annotation_builder.dart"
+    builder_factories: [ "hashCodeBuilder" ]
+    build_extensions: { ".dart": [ "hashCode.g.part" ] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
