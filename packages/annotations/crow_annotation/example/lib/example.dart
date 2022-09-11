@@ -3,46 +3,31 @@
 //  found in the LICENSE file.
 
 import 'package:crow_annotation/crow_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'example.g.dart';
 
+@Super()
 @Equals()
 @HashCode()
 @ToString()
+@Immutable()
 @Converter(User)
-class UserModel {
+class UserModel extends _UserModel {
   UserModel(
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.phone,
-    this.dateOfBirth,
-    this.country,
-    this.city,
-    this.postalCode,
+    String super.firstName,
+    String super.lastName,
+    String super.email,
+    String super.phone,
+    DateTime super.dateOfBirth,
+    String super.country,
+    String super.city,
+    String super.postalCode,
   );
-
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String phone;
-  final DateTime dateOfBirth;
-  final String country;
-  final String city;
-  final String postalCode;
 
   factory UserModel.fromUser(User user) => _$UserModelFromUser(user);
 
   User toUser() => _$UserModelToUser(this);
-
-  @override
-  String toString() => $toString();
-
-  @override
-  bool operator ==(Object other) => $equals(other);
-
-  @override
-  int get hashCode => $hashCode();
 }
 
 class User {

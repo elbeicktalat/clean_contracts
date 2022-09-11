@@ -48,7 +48,8 @@ import 'package:meta/meta_meta.dart';
 @Target(<TargetKind>{TargetKind.classType})
 class Converter {
   /// Accept a [Type]
-  const Converter(this.objectType, {
+  const Converter(
+    this.objectType, {
     this.fromObject,
     this.toObject,
   });
@@ -241,4 +242,116 @@ class HashCode {
 
   /// Exclude specific fields by passing there name.
   final List<String>? exclude;
+}
+
+/// {@template crow.annotation.Super}
+/// Allows you to create a normal or abstract super class,
+/// this class will be named as the annotated one as a normal class
+/// it can have a super class, set of mixins, interfaces
+/// and even [toString], [hashCode] etc.
+///
+/// ```dart
+/// @Super()
+/// @Equals()
+/// @HashCode()
+/// @ToString()
+/// @Immutable()
+/// class UserModel extends _UserModel {
+///   UserModel(
+///     String super._firstName,
+///     String super.lastName,
+///     String super.email,
+///     String super.phone,
+///     DateTime super.dateOfBirth,
+///     String super.country,
+///     String super.city,
+///     String super.postalCode,
+///   );
+/// }
+///
+/// // generated code:
+///
+/// // generate class is abstract by default, change [isAbstract].
+///
+/// abstract class _UserModel {
+///   _UserModel(
+///     this._firstName,
+///     this.lastName,
+///     this.email,
+///     this.phone,
+///     this.dateOfBirth,
+///     this.country,
+///     this.city,
+///     this.postalCode,
+///   );
+///
+/// // fields are final if class is annotated with [Immutable] of the meta package.
+///
+///   final String firstName;
+///   final String lastName;
+///   final String email;
+///   final String phone;
+///   final DateTime dateOfBirth;
+///   final String country;
+///   final String city;
+///   final String postalCode;
+///
+/// // following stuff are got only if class is annotated with there annotation.
+/// // for the equality and hashCode they are generated only if the class is immutable.
+///
+///   @override
+///   bool operator ==(Object other) => $equals(other);
+///
+///   @override
+///   int get hashCode => $hashCode();
+///
+///   @override
+///   String toString() => $toString();
+/// }
+///
+/// ```
+///
+/// {@endtemplate}
+@Target(<TargetKind>{TargetKind.classType})
+class Super {
+  /// {@macro crow.annotation.Super}
+  const Super({
+    this.isAbstract = true,
+    this.superType,
+    this.interfaces,
+    this.mixins,
+  });
+
+  /// Whether this super class is an abstract.
+  ///
+  /// By default all generated supers are abstracts.
+  final bool isAbstract;
+
+  /// Define the super class type that the generated super will be sub off,
+  /// in other words this define the super of the super.
+  ///
+  /// ```dart
+  /// @Super(superType: Model)
+  /// class UserModel extends _UserModel {}
+  ///
+  /// // generated code
+  ///
+  /// abstract class _UserModel extends Model {}
+  /// ```
+  final Type? superType;
+
+  /// The sets of mixins which will be mixed in this super class.
+  ///
+  /// ```dart
+  /// @Super(mixins: {User, Model})
+  /// class UserModel extends _UserModel {}
+  ///
+  /// // generated code:
+  ///
+  /// abstract class _UserModel with User, Model {}
+  /// ```
+  final Set<Type>? mixins;
+
+  /// The sets of interfaces which will be implemented by the sub class.
+  final Set<Type>? interfaces;
 }

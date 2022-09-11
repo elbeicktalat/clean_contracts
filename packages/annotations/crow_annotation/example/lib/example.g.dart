@@ -38,7 +38,7 @@ User _$UserModelToUser(UserModel instance) {
 // EqualsGenerator
 // **************************************************************************
 
-extension _$UserModelEqualsExtension on UserModel {
+extension _$UserModelEqualsExtension on _UserModel {
   bool $equals(Object other) =>
       identical(this, other) ||
       other is UserModel &&
@@ -57,7 +57,7 @@ extension _$UserModelEqualsExtension on UserModel {
 // HashCodeGenerator
 // **************************************************************************
 
-extension _$UserModelHashCodeExtension on UserModel {
+extension _$UserModelHashCodeExtension on _UserModel {
   int $hashCode() =>
       firstName.hashCode ^
       lastName.hashCode ^
@@ -70,10 +70,45 @@ extension _$UserModelHashCodeExtension on UserModel {
 }
 
 // **************************************************************************
+// SuperGenerator
+// **************************************************************************
+
+abstract class _UserModel {
+  _UserModel(
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.dateOfBirth,
+    this.country,
+    this.city,
+    this.postalCode,
+  );
+
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String phone;
+  final DateTime dateOfBirth;
+  final String country;
+  final String city;
+  final String postalCode;
+
+  @override
+  bool operator ==(Object other) => $equals(other);
+
+  @override
+  int get hashCode => $hashCode();
+
+  @override
+  String toString() => $toString();
+}
+
+// **************************************************************************
 // ToStringGenerator
 // **************************************************************************
 
-extension _$UserModelToStringExtension on UserModel {
+extension _$UserModelToStringExtension on _UserModel {
   String $toString() =>
       'UserModel{firstName: $firstName, lastName: $lastName, email: $email, phone: $phone, dateOfBirth: $dateOfBirth, country: $country, city: $city, postalCode: $postalCode}';
 }

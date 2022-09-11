@@ -27,3 +27,10 @@ builders:
     auto_apply: dependents
     build_to: cache
     applies_builders: [ "source_gen|combining_builder" ]
+  super_builder:
+    import: "package:crow_annotation_builder/crow_annotation_builder.dart"
+    builder_factories: [ "superBuilder" ]
+    build_extensions: { ".dart": [ "super.g.part" ] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]

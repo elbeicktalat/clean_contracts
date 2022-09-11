@@ -6,6 +6,7 @@ import 'package:build/build.dart';
 import 'package:crow_annotation_builder/src/converter_generator.dart';
 import 'package:crow_annotation_builder/src/equals_generator.dart';
 import 'package:crow_annotation_builder/src/hash_code_generator.dart';
+import 'package:crow_annotation_builder/src/super_generator.dart';
 import 'package:crow_annotation_builder/src/to_string_generator.dart';
 import 'package:source_gen/source_gen.dart';
 
@@ -20,3 +21,6 @@ Builder equalsBuilder(BuilderOptions options) =>
 
 Builder hashCodeBuilder(BuilderOptions options) =>
     SharedPartBuilder(<HashCodeGenerator>[HashCodeGenerator()], 'hashCode');
+
+Builder superBuilder(BuilderOptions options) =>
+    SharedPartBuilder(<SuperGenerator>[SuperGenerator()], 'super');

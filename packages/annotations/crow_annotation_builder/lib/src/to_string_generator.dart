@@ -30,12 +30,34 @@ class ToStringGenerator extends GeneratorForAnnotation<ToString> {
     );
     element.visitChildren(visitor);
 
+    bool hasSuperAnnotation = false;
+    for (final ElementAnnotation meta in element.metadata) {
+      if (meta.computeConstantValue()?.type?.toString() == 'Super') {
+        hasSuperAnnotation = true;
+      }
+    }
+
+    String targetName = visitor.className.toString();
+    if (hasSuperAnnotation) {
+      targetName = '_${visitor.className}';
+    }
+
     buffer.writeln(
-      'extension _\$${visitor.className}ToStringExtension on ${visitor.className} {',
+      'extension _\$${visitor.className}ToStringExtension on $targetName {',
     );
 
     buffer.write('String \$toString() => \'');
     buffer.write('${visitor.className}{');
+    if (hasSuperAnnotation) {
+      for (int i = 0; i < visitor.parameters.length; i++) {
+        final String paramName = visitor.parameters.keys.elementAt(i);
+
+        buffer.write('$paramName: \$$paramName');
+        if (i != visitor.parameters.length - 1) {
+          buffer.write(', ');
+        }
+      }
+    }
     for (int i = 0; i < visitor.fields.length; i++) {
       final String fieldName = visitor.fields.keys.elementAt(i);
       buffer.write('$fieldName: \$$fieldName');
@@ -60,11 +82,38 @@ class ToStringVisitor extends SimpleElementVisitor<void> {
   List<DartObject>? fieldsToExclude;
 
   late DartType className;
+  final Map<String, DartType> parameters = <String, DartType>{};
   final Map<String, DartType> fields = <String, DartType>{};
 
   @override
   void visitConstructorElement(ConstructorElement element) {
     className = element.type.returnType;
+    getParameters(element);
+  }
+
+  void getParameters(ConstructorElement element) {
+    if (element.enclosingElement3.unnamedConstructor?.parameters != null) {
+      List<ParameterElement> params =
+          element.enclosingElement3.unnamedConstructor!.parameters;
+
+      if (!includePrivets!) {
+        for (final ParameterElement param in params) {
+          if (!param.isPrivate) {
+            parameters[param.name] = param.type;
+          }
+        }
+      } else {
+        for (final ParameterElement param in params) {
+          parameters[param.name] = param.type;
+        }
+      }
+
+      if (fieldsToExclude != null) {
+        for (final DartObject param in fieldsToExclude!) {
+          parameters.remove(param.toStringValue());
+        }
+      }
+    }
   }
 
   @override
