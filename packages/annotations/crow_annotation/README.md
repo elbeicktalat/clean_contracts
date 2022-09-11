@@ -32,6 +32,69 @@ import 'package:crow_annotation/crow_annotation.dart';
 
 ## annotations
 
+### Super
+With the super annotation I can guaranty you that you will have a more cleaner api,
+if you use this annotation there is no more need to pass manually the object meaner overing,
+like: toString, hashCode etc. Just extends your annotated class with _ prefix and you have done.
+
+```dart
+@Super()
+@Equals()
+@HashCode()
+@ToString()
+@Immutable()
+@Converter(User)
+class UserModel extends _UserModel {
+  UserModel(
+    String super.firstName,
+    String super.lastName,
+    String super.email,
+    String super.phone,
+    DateTime super.dateOfBirth,
+    String super.country,
+    String super.city,
+    String super.postalCode,
+  );
+
+  factory UserModel.fromUser(User user) => _$UserModelFromUser(user);
+
+  User toUser() => _$UserModelToUser(this);
+}
+
+// generate result:
+
+abstract class _UserModel {
+  _UserModel(
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.dateOfBirth,
+    this.country,
+    this.city,
+    this.postalCode,
+  );
+
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String phone;
+  final DateTime dateOfBirth;
+  final String country;
+  final String city;
+  final String postalCode;
+
+  @override
+  bool operator ==(Object other) => $equals(other);
+
+  @override
+  int get hashCode => $hashCode();
+
+  @override
+  String toString() => $toString();
+}
+```
+
 ### Converter
 
 Allows you converting between object types. Think about it like Converting dart object to/from JSON,

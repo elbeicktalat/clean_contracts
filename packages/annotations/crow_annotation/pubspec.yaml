@@ -1,6 +1,6 @@
 name: crow_annotation
 description: Set of utils annotations which will save you the pain of writing boring code.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/elbeicktalat/crow/tree/master/packages/annotations/crow_annotation
 
 environment:
