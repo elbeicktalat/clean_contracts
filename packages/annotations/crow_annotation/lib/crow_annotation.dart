@@ -14,8 +14,8 @@ import 'package:meta/meta_meta.dart';
 ///
 /// // After that you will have tow functions, "annotated class from target" and
 /// // "annotated class to target".
-///<<<<
-/// @Converter(UserEntity)=======
+///
+/// @Converter(UserEntity)
 /// class UserModel {
 ///   UserModel(
 ///     this.id, {
@@ -45,6 +45,59 @@ import 'package:meta/meta_meta.dart';
 ///
 /// Its so important to note that the parameters must have the same name, type,
 /// position "for the positional parameters".
+///
+/// Hands up, with this annotation you get out of the box the following methods:
+///  - fromObject
+///  - toObject
+///  - fromJson
+///  - toJson
+///
+/// ```dart
+/// @Converter(User, fromObject: 'fromEntity', toObject: 'toEntity')
+/// @JsonSerializable()
+/// class UserModel {
+///   UserModel(
+///     this.firstName,
+///     this.lastName,
+///     this.email,
+///     this.phone,
+///     this.dateOfBirth,
+///     this.country,
+///     this.city,
+///     this.postalCode,
+///   );
+///
+///   final String firstName;
+///   final String lastName;
+///   final String email;
+///   final String phone;
+///   final DateTime dateOfBirth;
+///   final String country;
+///   final String city;
+///   final String postalCode;
+/// }
+///
+/// //generated code:
+///
+///  static UserModel fromEntity(User user) => _$UserModelFromUser(user);
+///
+///   User toEntity() => _$UserModelToUser(this);
+///
+///   static UserModel fromJson(Map<String, dynamic> json) =>
+///       _$UserModelFromJson(json);
+///
+///   Map<String, dynamic> toJson() => _$UserModelToJson(this);
+///
+/// // usage:
+///
+///   final Map<String, dynamic> json = model.toJson();
+///   final User entity = model.toEntity();
+///   final UserModel fromJson = UserModelConverter.fromJson(json);
+///   final UserModel fromEntity = UserModelConverter.fromEntity(entity);
+/// ```
+///
+/// Note: static methods fromJson/fromObject must be access by
+/// `<annotated-class>Converter` extension method.
 @Target(<TargetKind>{TargetKind.classType})
 class Converter {
   /// Accept a [Type]

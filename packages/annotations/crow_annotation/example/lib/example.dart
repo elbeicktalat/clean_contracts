@@ -24,10 +24,6 @@ class UserModel extends _UserModel {
     String super.city,
     String super.postalCode,
   );
-
-  factory UserModel.fromUser(User user) => _$UserModelFromUser(user);
-
-  User toUser() => _$UserModelToUser(this);
 }
 
 class User {

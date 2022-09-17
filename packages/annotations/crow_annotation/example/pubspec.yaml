@@ -8,11 +8,13 @@ environment:
 
 dependencies:
   meta:
+  json_annotation:
   crow_annotation:
     path: ../
 
 dev_dependencies:
   lints: ^2.0.0
+  json_serializable:
   crow_annotation_builder:
     path: ../../crow_annotation_builder
   build_runner:
