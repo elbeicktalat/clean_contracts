@@ -51,14 +51,15 @@ class HashCodeGenerator extends GeneratorForAnnotation<HashCode> {
           buffer.write(';');
         }
       }
-    }
-    for (int i = 0; i < visitor.fields.length; i++) {
-      final String fieldName = visitor.fields.keys.elementAt(i);
-      buffer.write('$fieldName.hashCode');
-      if (i != visitor.fields.length - 1) {
-        buffer.write('^');
-      } else {
-        buffer.write(';');
+    } else {
+      for (int i = 0; i < visitor.fields.length; i++) {
+        final String fieldName = visitor.fields.keys.elementAt(i);
+        buffer.write('$fieldName.hashCode');
+        if (i != visitor.fields.length - 1) {
+          buffer.write('^');
+        } else {
+          buffer.write(';');
+        }
       }
     }
 
