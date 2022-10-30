@@ -4,8 +4,8 @@
 
 import 'package:crow/src/_internal/internal.dart'
     show BaseViewModel, BaseViewMixin;
-import 'package:flutter/widgets.dart' show optionalTypeArgs;
 import 'package:get/get.dart' show GetView;
+import 'package:meta/meta.dart';
 
 @optionalTypeArgs
 abstract class View<T extends BaseViewModel> extends GetView<T>

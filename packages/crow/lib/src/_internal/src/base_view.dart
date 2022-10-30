@@ -7,6 +7,8 @@ part of internal;
 /// The base mixin for every View.
 ///
 /// This mixin need a type parameter of [BaseViewModel].
+@internal
+@immutable
 mixin BaseViewMixin<T extends BaseViewModel> on GetView<T> {
   /// The instance of the ViewModel.
   @protected
@@ -32,6 +34,7 @@ mixin BaseViewMixin<T extends BaseViewModel> on GetView<T> {
   /// The Widget build method, don't override this method instead use [builder].
   ///
   /// If do you override this than you'll lose the global context.
+  @override
   @protected
   Widget build(final BuildContext context) {
     viewModel._context = context;

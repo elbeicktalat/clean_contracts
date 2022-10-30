@@ -5,6 +5,7 @@
 part of internal;
 
 /// The parent of all ViewModels.
+@internal
 abstract class BaseViewModel extends GetxController {
   /// {@macro crow.context}
   @protected

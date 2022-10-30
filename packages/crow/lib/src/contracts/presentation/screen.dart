@@ -5,7 +5,9 @@
 import 'package:crow/src/_internal/internal.dart'
     show BaseViewModel, BaseViewMixin, BaseScreenMixin;
 import 'package:get/get.dart' show GetResponsiveView;
+import 'package:meta/meta.dart';
 
+@optionalTypeArgs
 abstract class Screen<T extends BaseViewModel> extends GetResponsiveView<T>
     with BaseViewMixin<T>, BaseScreenMixin<T> {
   Screen({super.key});

@@ -4,7 +4,9 @@
 
 import 'package:crow/src/contracts/domain/entity.dart';
 import 'package:crow/src/contracts/params.dart';
+import 'package:meta/meta.dart';
 
+@experimental
 abstract class CrudOperation<T, ID extends Object, E extends Entity,
     P extends Params> {
   /// Saves a given entity.
