@@ -20,7 +20,6 @@ import 'package:get/get.dart';
 
 export 'package:crow/src/contracts/binding.dart';
 export 'package:crow/src/contracts/crud_operation.dart';
-export 'package:crow/src/contracts/data/data_sources/data_source.dart';
 export 'package:crow/src/contracts/data/data_sources/local_data_source.dart';
 export 'package:crow/src/contracts/data/data_sources/remote_data_source.dart';
 export 'package:crow/src/contracts/data/model.dart';
@@ -34,6 +33,8 @@ export 'package:crow/src/contracts/presentation/screen.dart';
 export 'package:crow/src/contracts/presentation/view.dart';
 export 'package:crow/src/contracts/presentation/view_model.dart';
 export 'package:crow/src/contracts/repository.dart';
+export 'package:crow/src/services/connectivity_service.dart';
+export 'package:crow/src/services/preferences_service.dart';
 
 /// A pre registered [ViewModel], this allows [View] and [Screen] to non specify something custom.
 class _ViewModel extends ViewModel {}

@@ -3,5 +3,7 @@
 //  found in the LICENSE file.
 
 import 'package:crow/src/contracts/domain/service.dart';
+import 'package:meta/meta.dart';
 
+@internal
 abstract class DataSource extends Service {}
