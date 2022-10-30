@@ -9,9 +9,8 @@ class PreferencesService extends Service {
   SharedPreferences get instance => _preferences;
   late SharedPreferences _preferences;
 
-  @override
-  void onInit() async {
-    super.onInit();
+  Future<PreferencesService> init() async {
     _preferences = await SharedPreferences.getInstance();
+    return this;
   }
 }

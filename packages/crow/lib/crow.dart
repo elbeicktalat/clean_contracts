@@ -12,7 +12,6 @@
 library crow;
 
 import 'package:crow/src/_internal/internal.dart';
-import 'package:crow/src/contracts/binding.dart';
 import 'package:crow/src/contracts/presentation/view_model.dart';
 import 'package:crow/src/services/connectivity_service.dart';
 import 'package:crow/src/services/preferences_service.dart';
@@ -35,12 +34,13 @@ export 'package:crow/src/contracts/presentation/view_model.dart';
 export 'package:crow/src/contracts/repository.dart';
 export 'package:crow/src/services/connectivity_service.dart';
 export 'package:crow/src/services/preferences_service.dart';
+export 'package:crow/src/services/theme_mode.dart';
 
 /// A pre registered [ViewModel], this allows [View] and [Screen] to non specify something custom.
 class _ViewModel extends ViewModel {}
 
 /// The glue between the crow widgets and your app.
-class Crow implements Binding {
+class Crow {
   const Crow._internal();
 
   /// The current [Crow], if one has been created.
@@ -48,10 +48,12 @@ class Crow implements Binding {
   static const Crow _instance = Crow._internal();
 
   /// The place in where preregistered dependencies get registered.
-  @override
   void dependencies() {
     Get.put<BaseViewModel>(_ViewModel());
-    Get.put(ConnectivityService());
-    Get.put(PreferencesService());
+  }
+
+  Future<void> initAsyncServices() async {
+    await Get.putAsync(() => ConnectivityService().init());
+    await Get.putAsync(() => PreferencesService().init());
   }
 }

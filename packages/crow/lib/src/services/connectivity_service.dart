@@ -17,11 +17,10 @@ class ConnectivityService extends Service {
     _isConnected = resolve(connectivityResult);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
+  Future<ConnectivityService> init() async {
     _connectivity = Connectivity();
     _checkConnectivity();
+    return this;
   }
 
   static bool resolve(ConnectivityResult result) {
