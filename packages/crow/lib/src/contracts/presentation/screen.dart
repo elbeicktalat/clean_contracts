@@ -10,5 +10,9 @@ import 'package:meta/meta.dart';
 @optionalTypeArgs
 abstract class Screen<T extends BaseViewModel> extends GetResponsiveView<T>
     with BaseViewMixin<T>, BaseScreenMixin<T> {
-  Screen({super.key});
+  Screen({
+    super.alwaysUseBuilder,
+    super.settings,
+    super.key,
+  });
 }

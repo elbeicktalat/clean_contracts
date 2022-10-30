@@ -6,7 +6,7 @@ library internal;
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'
-    show GetView, GetInstance, GetResponsiveView, GetxController;
+    show GetInstance, GetResponsiveView, GetView, GetxController;
 import 'package:meta/meta.dart';
 
 part 'src/base_screen.dart';
