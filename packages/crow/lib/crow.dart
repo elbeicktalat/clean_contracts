@@ -11,9 +11,12 @@
 /// * [Examples](https://github.com/elbeicktalat/crow)
 library crow;
 
-import 'package:crow/src/_internal/internal.dart' show BaseViewModel;
+import 'package:crow/src/_internal/internal.dart';
+import 'package:crow/src/contracts/binding.dart';
 import 'package:crow/src/contracts/presentation/view_model.dart';
-import 'package:get/get.dart' show Get, Inst;
+import 'package:crow/src/services/connectivity_service.dart';
+import 'package:crow/src/services/preferences_service.dart';
+import 'package:get/get.dart';
 
 export 'package:crow/src/contracts/binding.dart';
 export 'package:crow/src/contracts/crud_operation.dart';
@@ -36,7 +39,7 @@ export 'package:crow/src/contracts/repository.dart';
 class _ViewModel extends ViewModel {}
 
 /// The glue between the crow widgets and your app.
-class Crow {
+class Crow implements Binding {
   const Crow._internal();
 
   /// The current [Crow], if one has been created.
@@ -44,7 +47,10 @@ class Crow {
   static const Crow _instance = Crow._internal();
 
   /// The place in where preregistered dependencies get registered.
-  void initDependencies() {
-    Get.lazyPut<BaseViewModel>(_ViewModel.new);
+  @override
+  void dependencies() {
+    Get.put<BaseViewModel>(_ViewModel());
+    Get.put(ConnectivityService());
+    Get.put(PreferencesService());
   }
 }

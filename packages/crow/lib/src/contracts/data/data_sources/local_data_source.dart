@@ -3,5 +3,10 @@
 //  found in the LICENSE file.
 
 import 'package:crow/src/contracts/data/data_sources/data_source.dart';
+import 'package:crow/src/services/preferences_service.dart';
+import 'package:get/get.dart' show Get, Inst;
+import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class LocalDataSource extends DataSource {}
+abstract class LocalDataSource extends DataSource {
+  SharedPreferences get preferences => Get.find<PreferencesService>().instance;
+}
