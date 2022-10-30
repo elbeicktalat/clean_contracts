@@ -11,19 +11,29 @@
 /// * [Examples](https://github.com/elbeicktalat/crow)
 library crow;
 
-import 'package:crow/src/view_model/view_model.dart';
-import 'package:get_it/get_it.dart';
+import 'package:crow/src/_internal/internal.dart' show BaseViewModel;
+import 'package:crow/src/contracts/presentation/view_model.dart';
+import 'package:get/get.dart' show Get, Inst;
 
-export 'package:crow/src/stateful/screen.dart';
-export 'package:crow/src/stateful/view.dart';
-export 'package:crow/src/stateless/screen.dart';
-export 'package:crow/src/stateless/view.dart';
-export 'package:crow/src/utils/screen_settings.dart';
-export 'package:crow/src/utils/screen_type.dart';
-export 'package:crow/src/view_model/state_view_model.dart';
-export 'package:crow/src/view_model/view_model.dart';
+export 'package:crow/src/contracts/binding.dart';
+export 'package:crow/src/contracts/crud_operation.dart';
+export 'package:crow/src/contracts/data/data_sources/data_source.dart';
+export 'package:crow/src/contracts/data/data_sources/local_data_source.dart';
+export 'package:crow/src/contracts/data/data_sources/remote_data_source.dart';
+export 'package:crow/src/contracts/data/model.dart';
+export 'package:crow/src/contracts/domain/entity.dart';
+export 'package:crow/src/contracts/domain/service.dart';
+export 'package:crow/src/contracts/domain/usecase.dart';
+export 'package:crow/src/contracts/params.dart';
+export 'package:crow/src/contracts/presentation/middleware.dart';
+export 'package:crow/src/contracts/presentation/page.dart';
+export 'package:crow/src/contracts/presentation/screen.dart';
+export 'package:crow/src/contracts/presentation/view.dart';
+export 'package:crow/src/contracts/presentation/view_model.dart';
+export 'package:crow/src/contracts/repository.dart';
 
-class _DefaultViewModel extends ViewModel {}
+/// A pre registered [ViewModel], this allows [View] and [Screen] to non specify something custom.
+class _ViewModel extends ViewModel {}
 
 /// The glue between the crow widgets and your app.
 class Crow {
@@ -35,6 +45,6 @@ class Crow {
 
   /// The place in where preregistered dependencies get registered.
   void initDependencies() {
-    GetIt.instance.registerLazySingleton<ViewModel>(_DefaultViewModel.new);
+    Get.lazyPut<BaseViewModel>(_ViewModel.new);
   }
 }

@@ -5,7 +5,7 @@
 part of internal;
 
 /// The parent of all ViewModels.
-abstract class BaseViewModel {
+abstract class BaseViewModel extends GetxController {
   /// {@macro crow.context}
   @protected
   BuildContext get context => _context;
