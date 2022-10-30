@@ -15,6 +15,7 @@ import 'package:crow/src/_internal/internal.dart';
 import 'package:crow/src/contracts/presentation/view_model.dart';
 import 'package:crow/src/services/connectivity_service.dart';
 import 'package:crow/src/services/preferences_service.dart';
+import 'package:crow/src/services/theme_mode_service.dart';
 import 'package:get/get.dart';
 
 export 'package:crow/src/contracts/binding.dart';
@@ -34,7 +35,7 @@ export 'package:crow/src/contracts/presentation/view_model.dart';
 export 'package:crow/src/contracts/repository.dart';
 export 'package:crow/src/services/connectivity_service.dart';
 export 'package:crow/src/services/preferences_service.dart';
-export 'package:crow/src/services/theme_mode.dart';
+export 'package:crow/src/services/theme_mode_service.dart';
 
 /// A pre registered [ViewModel], this allows [View] and [Screen] to non specify something custom.
 class _ViewModel extends ViewModel {}
@@ -48,8 +49,9 @@ class Crow {
   static const Crow _instance = Crow._internal();
 
   /// The place in where preregistered dependencies get registered.
-  void dependencies() {
+  void initDependencies() {
     Get.put<BaseViewModel>(_ViewModel());
+    Get.put(ThemeModeService());
   }
 
   Future<void> initAsyncServices() async {
