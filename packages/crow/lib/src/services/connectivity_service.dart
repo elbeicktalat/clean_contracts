@@ -2,25 +2,69 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
+import 'dart:async';
+import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:crow/src/contracts/domain/service.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
 class ConnectivityService extends Service {
-  late Connectivity _connectivity;
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
-  bool get isConnected => _isConnected;
-  late bool _isConnected;
+  /// A void callback called everytime the connectivity is changes.
+  ///
+  /// You can make use of this property as you like,
+  /// for example: show a snack bar to inform the user about the connectivity status.
+  VoidCallback? onConnectivityChange;
 
-  void _checkConnectivity() async {
-    ConnectivityResult connectivityResult =
-        await _connectivity.checkConnectivity();
-    _isConnected = resolve(connectivityResult);
+  /// Whether the device is connected the the internet.
+  ///
+  /// This is make sure that you have a real access to the internet.
+  bool get isConnected => _isConnected.value;
+  late Rx<bool> _isConnected;
+
+  Future<void> _checkConnectivity() async {
+    final ConnectivityResult result = await _connectivity.checkConnectivity();
+    _isConnected = resolve(result).obs;
+    _checkInternetConnectionStatus(result);
+  }
+
+  void _checkInternetConnectionStatus(ConnectivityResult result) async {
+    late bool isOnline;
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (exception, stackTrace) {
+      isOnline = false;
+      debugPrint(exception.toString());
+      debugPrintStack(stackTrace: stackTrace);
+    } finally {
+      _isConnected.value = isOnline && resolve(result);
+    }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      _isConnected.value = resolve(result);
+      _checkInternetConnectionStatus(result);
+      onConnectivityChange?.call();
+    });
   }
 
   Future<ConnectivityService> init() async {
-    _connectivity = Connectivity();
-    _checkConnectivity();
+    await _checkConnectivity();
     return this;
+  }
+
+  @override
+  void onClose() {
+    _connectivitySubscription.cancel();
+    super.onClose();
   }
 
   static bool resolve(ConnectivityResult result) {
