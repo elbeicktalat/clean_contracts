@@ -34,7 +34,6 @@ class ThemeModeService extends Service {
     if (source != null) {
       themeMode.value = parse(source);
     }
-    print(isDarkMode);
   }
 
   /// Sets a new value to the [themeMode].

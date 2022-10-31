@@ -26,32 +26,60 @@ $ flutter pub get
 import 'package:crow/crow.dart';
 ```
 
+## Offers
+
+### contracts (interfaces)
+
+- data layer
+    - Model
+    - RemoteDataSource
+    - LocalDataSource
+- domain layer
+    - Entity
+    - Service
+    - UseCase
+- presentation layer
+    - middleware
+    - page
+    - screen
+    - view
+    - view_model
+- generic
+    - crud_operation
+    - params
+    - repository
+
+### Services
+
+- connectivity_service
+- preferences_service
+- theme_mode_service
+
 ## Usage
 
 There are two types of `Widgets`:
 
 1. **View** - The `StatelessWidget` implementation but with extra features.
-2. **Screen** - The responsive version of `View`, which offers more utils.
-   You will find only `View` examples,
-   but `Screen` are the same except they have more method for the build. Like: mobile(), tablet() etc.
+2. **Screen** - The responsive version of `View`, which offers more utils. You will find only `View`
+   examples, but `Screen` are the same except they have more method for the build. Like: phone(),
+   tablet() etc.
 
 ### Start
 
-1. First of all At the top of your main method you need to call Crow initDependencies,
-   which will allows you getting benefits of preregistered dependencies.
+1. First of all At the top of your main method you need to call Crow initDependencies, which will
+   allows you getting benefits of preregistered dependencies.
 2. Define your View.
-3. If you need custom viewModel then set the View generic type to the ViewModel which you have been created.
+3. If you need custom viewModel then set the View generic type to the ViewModel which you have been
+   created.
 4. Register your ViewModel as a dependency.
 5. Enjoy crow!.
 
 ```dart
-// The Stateless example of Crow package. 
-// Try to discover the others by your self 😉 I'm joking!
-
-void main() {
+void main() async {
+  await Crow.instance.initAsyncServices();
   Crow.instance.initDependencies();
-  GetIt.instance.registerLazySingleton<HomeViewModel>(HomeViewModel.new); // Or
-  // GetIt.instance.registerLazySingleton<HomeViewModel>(() => HomeViewModel()); same thing.
+  Get.lazyPut<HomeViewModel>(HomeViewModel.new); // Or
+  // Get.lazyPut<HomeViewModel>(() => HomeViewModel()); same thing.
 }
 
 // Remember to set the View generic `Type` in order to accesses your custom properties,
@@ -103,98 +131,6 @@ class SecondPage extends View {
     return const Scaffold(
       body: Center(
         child: Text('Go back'),
-      ),
-    );
-  }
-}
-```
-
-The View Stateful Example:
-
-```dart
-void main() {
-  // Crow.instance.initDependencies(); // un like before there are no preregistered StateViewModel.
-  GetIt.instance.registerLazySingleton<HomeViewModel>(HomeViewModel.new);
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-// since you want to use the Sate methods than the HomeViewModel is a subclass of `StateViewModel`.
-class _MyHomePageState extends ViewState<MyHomePage, HomeViewModel>
-    with SingleTickerProviderStateMixin {
-  // declare this here and not in the ViewModel because of vsync property.
-  late TabController tabController;
-
-  // Note you don't need to call any State method, we are doing this because of vsync property. 
-  @override
-  void initState() {
-    super.initState();
-    // super.initState() calls the super initState(),
-    // whose call the ViewModel one.
-    tabController = TabController(
-      length: 3,
-      vsync: this,
-      initialIndex: viewModel.pageViewController.initialPage,
-    );
-  }
-
-  @override
-  void dispose() {
-    tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget? builder() {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          PageView(
-            controller: viewModel.pageViewController,
-            children: [
-              Container(color: Colors.blue),
-              Container(color: Colors.teal),
-              Container(color: Colors.purple),
-            ],
-            onPageChanged: (value) {
-              // also we cannot setState from the ViewModel,
-              // so this is another motivation of the tabController in the State class.
-              setState(() {
-                tabController.index = value;
-              });
-            },
-          ),
-          TabPageSelector(
-            controller: tabController,
-            color: Colors.white,
-            selectedColor: Colors.black,
-            borderStyle: BorderStyle.none,
-          ),
-        ],
       ),
     );
   }
