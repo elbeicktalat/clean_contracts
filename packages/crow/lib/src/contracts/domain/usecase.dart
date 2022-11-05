@@ -2,9 +2,8 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:crow/src/contracts/domain/entity.dart';
 import 'package:crow/src/contracts/params.dart';
 
-abstract class UseCase<E extends Entity, P extends Params?> {
-  Future<E?> call(P params);
+abstract class UseCase<T, P extends Params?> {
+  Future<T> call(P params);
 }
