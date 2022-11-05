@@ -8,10 +8,12 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:crow/src/contracts/domain/service.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' show Rx, RxT;
 
 class ConnectivityService extends Service {
+  Connectivity get connectivity => _connectivity;
   final Connectivity _connectivity = Connectivity();
+
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
   /// A void callback called everytime the connectivity is changes.
