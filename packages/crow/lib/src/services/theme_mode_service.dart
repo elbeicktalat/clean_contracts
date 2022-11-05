@@ -12,7 +12,8 @@ class ThemeModeService extends Service {
   final Rx<ThemeMode> themeMode = Rx<ThemeMode>(ThemeMode.system);
   late Rx<Brightness?> _brightness;
 
-  SharedPreferences get _preferences => Get.find<PreferencesService>().instance;
+  SharedPreferences get _preferences =>
+      Get.find<PreferencesService>().preferences;
 
   bool get isSystemMode {
     final String? source = _preferences.getString(_themeModeKey);

@@ -10,5 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LocalDataSource extends DataSource {
   @protected
-  SharedPreferences get preferences => Get.find<PreferencesService>().instance;
+  SharedPreferences get preferences =>
+      Get.find<PreferencesService>().preferences;
 }
