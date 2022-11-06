@@ -2,15 +2,14 @@
 //  Use of this source code is governed by a MIT-style license that can be
 //  found in the LICENSE file.
 
-import 'package:flutter/widgets.dart' show Widget;
 import 'package:get/get.dart' show GetPage;
+import 'package:meta/meta.dart';
 
-typedef WidgetBuilder = Widget Function();
-
+@optionalTypeArgs
 abstract class Page<T> extends GetPage<T> {
   Page({
     required super.name,
-    required WidgetBuilder view,
+    required super.page,
     super.title,
     super.participatesInRootNavigator,
     super.gestureWidth,
@@ -26,14 +25,11 @@ abstract class Page<T> extends GetPage<T> {
     super.transition,
     super.customTransition,
     super.fullscreenDialog,
+    super.children,
     super.middlewares,
     super.unknownRoute,
     super.arguments,
     super.showCupertinoParallax,
     super.preventDuplicates,
-    List<Page>? subPages,
-  }) : super(
-          page: view,
-          children: subPages = const <Page>[],
-        );
+  });
 }
