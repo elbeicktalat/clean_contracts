@@ -11,6 +11,8 @@ dependencies:
   json_annotation:
   crow_annotation:
     path: ../
+  crow:
+    path: ../../../crow
 
 dev_dependencies:
   lints: ^2.0.0
