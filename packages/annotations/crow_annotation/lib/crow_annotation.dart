@@ -408,3 +408,100 @@ class Super {
   /// The sets of interfaces which will be implemented by the sub class.
   final Set<Type>? interfaces;
 }
+
+/// Autowired allows to inject and find dependencies based on
+/// GetX dependency management.
+///
+/// Note: Unnamed contracture will be considered,
+/// also only non optional required parameters will be injected (founded).
+///
+/// To find dependency with a tag you must annotate it with [Autowired]
+/// and specify the `tag` you search for.
+///
+/// ```dart
+/// @Autowired()
+/// class UserViewModel {
+///   UserViewModel(this._userRepository, this._userService);
+///
+///   @Autowired(tag: '_userRepositoryTag')
+///   final UserRepository _userRepository;
+///
+///   final UserService _userService;
+/// }
+/// ```
+@Target(<TargetKind>{TargetKind.classType, TargetKind.field})
+class Autowired {
+  /// Register and call a lazy dependency.
+  const Autowired({
+    this.as,
+    this.tag,
+    this.callDependenciesBefore = false,
+  })  : _strategy = _AutowiredStrategy.lazy,
+        permanent = false;
+
+  /// Register and call dependency.
+  const Autowired.put({
+    this.as,
+    this.tag,
+    this.permanent = false,
+    this.callDependenciesBefore = false,
+  }) : _strategy = _AutowiredStrategy.normal;
+
+  /// Register and call an async dependency.
+  const Autowired.async({
+    this.as,
+    this.tag,
+    this.permanent = false,
+    this.callDependenciesBefore = false,
+  }) : _strategy = _AutowiredStrategy.async;
+
+  /// The type to bind your implementation to,
+  /// typically, an abstract class which is implemented by the
+  /// annotated class.
+  final Type? as;
+
+  /// Use a [tag] as an "id" to create multiple records of the same `dependency`
+  /// the [tag] **doesn't** conflict with the same tags
+  /// used by other dependencies Types.
+  final String? tag;
+
+  /// Weather the registered dependency should be kept the in memory.
+  final bool permanent;
+
+  /// Weather the `Dependencies Bindings` will be called before the registration
+  /// of actual dependency.
+  ///
+  /// ```dart
+  /// void dependencies() {
+  /// // bindings calling
+  ///   UserRepositoryBinding().dependencies();
+  ///   UserServiceBinding().dependencies();
+  ///
+  /// // actual dependency
+  ///   lazyPut(
+  ///     () => UserViewModel(
+  ///       find<UserRepository>(),
+  ///       find<UserService>(),
+  ///     ),
+  ///   );
+  /// }
+  /// ```
+  final bool callDependenciesBefore;
+
+  final _AutowiredStrategy _strategy;
+}
+
+/// A const instance of [Autowired] with default arguments.
+const Autowired autowired = Autowired();
+
+/// A const instance of [Autowired.put] with default arguments.
+const Autowired putAutowired = Autowired.put();
+
+/// A const instance of [Autowired.async] with default arguments.
+const Autowired asyncAutowired = Autowired.async();
+
+enum _AutowiredStrategy {
+  lazy,
+  async,
+  normal,
+}
