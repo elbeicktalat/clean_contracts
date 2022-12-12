@@ -1,6 +1,6 @@
 name: crow_annotation_builder
 description: Code generation, the maker of the magic of crow_annotation package.
-version: 0.0.3
+version: 0.0.3+1
 homepage: https://github.com/elbeicktalat/crow/tree/master/packages/annotations/crow_annotation_builder
 
 environment:

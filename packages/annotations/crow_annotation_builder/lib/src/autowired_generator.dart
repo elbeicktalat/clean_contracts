@@ -6,6 +6,7 @@ import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/visitor.dart';
+import 'package:analyzer/src/generated/source.dart';
 import 'package:build/src/builder/build_step.dart';
 import 'package:crow_annotation/crow_annotation.dart';
 import 'package:source_gen/source_gen.dart';
@@ -81,7 +82,10 @@ class AutowiredGenerator extends GeneratorForAnnotation<Autowired> {
       }
     }
 
+    _getImports(element, buffer, callDependenciesBefore, visitor);
+
     buffer.writeln('class $className extends $_bindingClassName {');
+    buffer.writeln('@override');
     buffer.writeln('void dependencies() {');
     if (callDependenciesBefore) {
       for (final ParameterElement parameter in visitor.parameters) {
@@ -121,6 +125,62 @@ class AutowiredGenerator extends GeneratorForAnnotation<Autowired> {
     final String result = buffer.toString();
     buffer.clear();
     return result;
+  }
+
+  void _getImports(Element element, StringBuffer buffer,
+      bool callDependenciesBefore, AutowiredVisitor visitor) {
+    final List<LibraryImportElement> imports =
+        element.library?.libraryImports ?? <LibraryImportElement>[];
+
+    imports.retainWhere((LibraryImportElement element) {
+      return !(element.importedLibrary?.isDartCore ?? false) &&
+          !(element.importedLibrary.isCrowAnnotation);
+    });
+
+    for (int index = 0; index < imports.length; index++) {
+      final LibraryImportElement importElement = imports[index];
+      if (index == 0) {
+        buffer.writeln(
+          getImport(
+            importElement.librarySource.getPackageImportValue(),
+          ),
+        );
+      }
+      buffer.writeln(
+        getImport(
+          importElement.importedLibrary?.librarySource.getPackageImportValue(),
+        ),
+      );
+    }
+
+    if (callDependenciesBefore) {
+      for (int i = 0; i < visitor.parameters.length; i++) {
+        final ParameterElement parameter = visitor.parameters[i];
+
+        final String typeName =
+            parameter.type.getDisplayString(withNullability: false);
+
+        final bool any = imports.any((LibraryImportElement e) => e
+            .getDisplayString(withNullability: false)
+            .contains(typeName.toLowerSnakeCase()));
+
+        if (any) {
+          String? firstWhere = imports
+              .firstWhere((LibraryImportElement e) => e
+                  .getDisplayString(withNullability: false)
+                  .contains(typeName.toLowerSnakeCase()))
+              .importedLibrary
+              ?.librarySource
+              .getPackageImportValue();
+
+          buffer.writeln(
+            getImport(
+              '${firstWhere?.replaceAll('.dart', '')}.binding.dart',
+            ),
+          );
+        }
+      }
+    }
   }
 
   String _getFinders(
@@ -262,10 +322,40 @@ extension DartObjectExtemstion on DartObject {
   }
 }
 
-extension ElementAnnotationExtension on ElementAnnotation {}
+extension LibraryElementExtension on LibraryElement? {
+  bool get isCrowAnnotation =>
+      this
+          ?.getDisplayString(withNullability: false)
+          .contains('crow_annotation') ??
+      false;
+}
+
+extension LibraryImportElementExtension on Source? {
+  String? getPackageImportValue() {
+    String? value = this.toString().replaceFirst('/', '');
+    return 'package:${value.replaceAll('/lib', '')}';
+  }
+}
+
+String getImport(String? value) => value != null ? "import '$value';" : '';
 
 enum _AutowiredStrategy {
   lazy,
   async,
   normal,
+}
+
+extension StringExtension on String {
+  List<String> toWords() => split(' ');
+
+  String toLowerSnakeCase() {
+    RegExp regExp = RegExp(r'(?<=[a-z])[A-Z]');
+    final String firstChar = String.fromCharCode(runes.first);
+    String result = this
+        .replaceFirst(firstChar, firstChar.toLowerCase())
+        .replaceAllMapped(regExp, (Match m) => ('_${m.group(0)}'))
+        .toLowerCase();
+
+    return result;
+  }
 }
