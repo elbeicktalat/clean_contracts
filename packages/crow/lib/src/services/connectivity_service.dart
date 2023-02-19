@@ -78,6 +78,7 @@ class ConnectivityService extends Service {
       case ConnectivityResult.bluetooth:
       case ConnectivityResult.vpn:
       case ConnectivityResult.none:
+      case ConnectivityResult.other:
         return false;
     }
   }
