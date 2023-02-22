@@ -31,29 +31,29 @@ class ConnectivityService extends Service {
   Future<void> _checkConnectivity() async {
     final ConnectivityResult result = await _connectivity.checkConnectivity();
     _isConnected = resolve(result).obs;
-    _checkInternetConnectionStatus(result);
+    // _checkInternetConnectionStatus(result);
   }
 
-  void _checkInternetConnectionStatus(ConnectivityResult result) async {
-    late bool isOnline;
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-    } on SocketException catch (exception, stackTrace) {
-      isOnline = false;
-      debugPrint(exception.toString());
-      debugPrintStack(stackTrace: stackTrace);
-    } finally {
-      _isConnected.value = isOnline && resolve(result);
-    }
-  }
+  // void _checkInternetConnectionStatus(ConnectivityResult result) async {
+  //   bool? isOnline;
+  //   try {
+  //     final result = await InternetAddress.lookup('google.com');
+  //     isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+  //   } on SocketException catch (exception, stackTrace) {
+  //     isOnline = false;
+  //     debugPrint(exception.toString());
+  //     debugPrintStack(stackTrace: stackTrace);
+  //   } finally {
+  //     _isConnected.value = isOnline ?? resolve(result);
+  //   }
+  // }
 
   @override
   void onInit() {
     super.onInit();
     _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       _isConnected.value = resolve(result);
-      _checkInternetConnectionStatus(result);
+      // _checkInternetConnectionStatus(result);
       onConnectivityChange?.call();
     });
   }
